@@ -75,10 +75,12 @@ pbAPI is the PushBullet API key. You can get this from your PushBullet account b
 
 Your final edits should look something like this, I have removed the comments (lines beginning with a #) from the file for brevity:
 
-```username = 'me@myemail.com' 
+```
+username = 'me@myemail.com' 
 password = 'myPassword' 
 offlineAlertTime = 0 
-pbAPI = 'o.WhateverPushbulletGaveMe' ```
+pbAPI = 'o.WhateverPushbulletGaveMe' 
+```
 
 Notice offlineAlertTime is 0, this is for testing only.
 
@@ -140,16 +142,19 @@ The script is very small and basic, and doesn't have great error reporting at th
 
 If you get the following:
 
-```Traceback (most recent call last):                                                                                                                          
+```
+Traceback (most recent call last):                                                                                                                          
   File "./seneye-online.py", line 36, in <module>                                                                                                           
     url=('https://api.seneye.com/v1/devices/%s?IncludeState=1&user=%s&pwd=%s' % (tank["id"], username, password))                                           
-TypeError: string indices must be integers```
+TypeError: string indices must be integers
+```
 
 Your username and/or password is wrong.
 
 If you get this:
 
-```Traceback (most recent call last):
+```
+Traceback (most recent call last):
   File "seneye-online.py", line 40, in <module>
     alertUserToOfflineState(tankinfo.json()['description'] , (timeDiff/60))
   File "seneye-online.py", line 24, in alertUserToOfflineState
@@ -162,7 +167,8 @@ If you get this:
     resp_dict = self._get_data(self.DEVICES_URL)
   File "/usr/local/lib/python3.5/dist-packages/pushbullet/pushbullet.py", line 35, in _get_data
     raise InvalidKeyError()
-pushbullet.errors.InvalidKeyError```
+pushbullet.errors.InvalidKeyError
+```
 
 Your pbAPI value is incorrect.
 
