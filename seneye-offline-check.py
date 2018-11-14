@@ -1,19 +1,19 @@
 #!/usr/bin/python
-import json, requests, calendar, time
+import json, requests, calendar, time, os
 from pushbullet import Pushbullet
 
 # User configured parts:
 username = os.environ['SENEYE_USERNAME']
 password = os.environ['SENEYE_PASSWORD']
-offlineAlertTime = os.environ['OFFLINE_ALERT_MINUTES']
+offlineAlertTime = int(os.environ['OFFLINE_ALERT_MINUTES'])
 pbAPI = os.environ['PUSHBULLET_API_KEY']
 
 # def which sends pushbullet alert if needed:
 def alertUserToOfflineState(tankName , timeOffline):
     pb = Pushbullet(pbAPI)
     my_channel = pb.channels[0]
-    pb.push_note("SENEYE OFFLINE WARNING", ("%s has been offline for %d minutes now!" % (tankName, timeOffline)))
-    print('Sent pushbullet warning: %s has been offline for %d minutes now!' % (tankName, timeOffline))
+    pb.push_note("SENEYE OFFLINE WARNING", ("%s has been offline for %d minutes" % (tankName, timeOffline)))
+    print('Sent pushbullet warning: %s has been offline for %d minutes' % (tankName, timeOffline))
 
 url = ('https://api.seneye.com/v1/devices?user=%s&pwd=%s' % (username , password))
 
@@ -28,4 +28,4 @@ for tank in seneye.json():
     if (timeDiff/60) >= offlineAlertTime:
         alertUserToOfflineState(tankinfo.json()['description'] , (timeDiff/60))
     else:
-        print('Last update was %d minutes ago. We are not panicking just yet :)' % ((timeDiff/60)))
+        print('%s last updated %d minutes ago. No alert sent.' % (tankinfo.json()['description'], (timeDiff/60)))
