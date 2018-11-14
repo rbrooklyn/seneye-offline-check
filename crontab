@@ -1,0 +1,2 @@
+# m h  dom mon dow   command
+0 0,4,8,12,16,20 * * * root python3 /seneye/seneye-offline-check.py > /proc/1/fd/1 2>/proc/1/fd/2
