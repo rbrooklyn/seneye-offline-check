@@ -28,9 +28,13 @@ As usual, the Seneye and this script are not a replacement for good aquarium mai
 The Dockerfile can be used to build a image for a docker installation.
 
 The following environment settings need to be provided:
+
 SENEYE_USERNAME - This is probably your email address. Required.
+
 SENEYE_PASSWORD - Whatever your password is to login to the seneye.me website. Required.
+
 OFFLINE_ALERT_MINUTES - How many minutes where no update has been seen before sending pushbullet notification. Optional, defaults to 240 (4 hours)
+
 PUSHBULLET_API_KEY - The API key from the pushbullet website. Required.
 
 The script will run every 4 hours: at midnight, 4am, 8am, 12pm, 4pm, 8pm. If the script, at that exact point, sees that your Seneye's latest readings are over the value given in OFFLINE_ALERT_MINUTES (set above), then a pushbullet notification will be sent, warning of the situation.
