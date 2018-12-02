@@ -16,8 +16,8 @@ RUN pip3 install pushbullet.py
 #COPY crontab /etc/cron.d/seneye
 
 ## Uncomment to use github files:
-RUN wget https://raw.githubusercontent.com/ribs85/seneye-offline-check/master/seneye-offline-check.py -O /seneye/seneye-offline-check.py
-RUN wget https://raw.githubusercontent.com/ribs85/seneye-offline-check/master/crontab -O /etc/cron.d/seneye
+RUN wget https://raw.githubusercontent.com/rbrooklyn/seneye-offline-check/master/seneye-offline-check.py -O /seneye/seneye-offline-check.py
+RUN wget https://raw.githubusercontent.com/rbrooklyn/seneye-offline-check/master/crontab -O /etc/cron.d/seneye
 
 RUN chmod 0644 /etc/cron.d/seneye
 
